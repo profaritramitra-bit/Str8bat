@@ -20,24 +20,26 @@ export default function Navbar({ activeTab, setActiveTab, activePlayer, onToggle
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#12141a]/95 backdrop-blur-md border-b border-[#2a2f3a] px-4 py-3 md:px-8">
+    <header className="sticky top-0 z-50 bg-[#0f172a]/95 backdrop-blur-md border-b border-slate-800 px-4 py-3 md:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         {/* Brand Logo & Identity */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('overview')}>
-            <div className="text-2xl font-black tracking-tighter text-[#00ff88]">
-              STR8BAT<span className="text-white">.</span>
+            <div className="bg-gradient-to-tr from-emerald-400 to-lime-300 p-2 rounded-xl shadow-lg shadow-emerald-500/20">
+              <span className="font-mono font-black text-slate-950 text-xl tracking-tighter">str8</span>
             </div>
-            <div className="hidden sm:block border-l border-[#2a2f3a] pl-3">
-              <span className="text-[10px] font-mono font-semibold text-slate-400 block tracking-widest leading-none">IOT PERFORMANCE</span>
-              <span className="text-[9px] text-[#00ff88] font-bold uppercase tracking-wider block mt-0.5">CORE STATUS: ONLINE</span>
+            <div>
+              <h1 className="font-sans font-bold text-white text-lg tracking-tight leading-none">
+                bat <span className="text-emerald-400 font-mono font-medium text-xs bg-emerald-500/10 px-2 py-0.5 rounded ml-1">IOT TECH</span>
+              </h1>
+              <p className="font-sans text-slate-400 text-xs mt-0.5">Cricket Performance Hub</p>
             </div>
           </div>
 
           {/* Quick player toggle for smaller screens */}
           <button 
             onClick={onToggleLevel}
-            className="md:hidden text-xs font-semibold bg-[#1e222b] text-[#00ff88] border border-[#2a2f3a] hover:bg-[#2a2f3a] px-3 py-1.5 rounded-lg transition-all duration-200"
+            className="md:hidden text-xs font-semibold bg-slate-800 text-emerald-400 border border-slate-700 hover:bg-slate-700 hover:text-white px-3 py-1.5 rounded-lg transition-all duration-200"
           >
             {activePlayer.level} Profile
           </button>
@@ -52,13 +54,13 @@ export default function Navbar({ activeTab, setActiveTab, activePlayer, onToggle
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer border ${
+                className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-[#0a0c10] border-[#00ff88]/30 text-[#00ff88] shadow-sm shadow-[#00ff88]/5'
-                    : 'text-slate-400 hover:bg-[#1e222b] hover:text-slate-200 border-transparent'
+                    ? 'bg-gradient-to-r from-emerald-500/20 to-lime-500/10 border border-emerald-500/30 text-emerald-300 shadow-md shadow-emerald-500/5'
+                    : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 border border-transparent'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#00ff88]' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -67,15 +69,22 @@ export default function Navbar({ activeTab, setActiveTab, activePlayer, onToggle
 
         {/* User Card & Level Toggle */}
         <div className="hidden md:flex items-center space-x-4">
-          <div className="flex items-center space-x-3 bg-[#0a0c10] border border-[#2a2f3a] p-1.5 pr-4 rounded-xl">
-            <div className="w-8 h-8 rounded-full bg-[#1e222b] border border-[#00ff88] flex items-center justify-center font-bold text-xs text-[#00ff88]">
-              {activePlayer.name.split(' ').map(n => n[0]).join('')}
-            </div>
+          <div className="flex items-center space-x-3 bg-slate-900 border border-slate-800/80 p-1.5 pr-4 rounded-xl">
+            <img
+              src={activePlayer.avatar}
+              alt={activePlayer.name}
+              className="w-8 h-8 rounded-lg object-cover ring-2 ring-emerald-500/30"
+              referrerPolicy="no-referrer"
+            />
             <div className="text-left">
               <div className="flex items-center space-x-1.5">
                 <span className="font-sans font-semibold text-slate-100 text-xs">{activePlayer.name}</span>
-                <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20`}>
-                  {activePlayer.level === 'Professional' ? 'Pro' : 'Amateur'}
+                <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide ${
+                  activePlayer.level === 'Professional' 
+                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' 
+                    : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                }`}>
+                  {activePlayer.level}
                 </span>
               </div>
               <p className="font-mono text-[10px] text-slate-400">{activePlayer.role} • {activePlayer.battingStyle}</p>
@@ -86,8 +95,8 @@ export default function Navbar({ activeTab, setActiveTab, activePlayer, onToggle
             onClick={onToggleLevel}
             className={`cursor-pointer font-sans text-xs font-bold px-4 py-2.5 rounded-xl border transition-all duration-300 shadow-md hover:scale-[1.02] ${
               activePlayer.level === 'Professional'
-                ? 'bg-[#00ff88] text-black border-[#00ff88] hover:bg-[#00e577] hover:shadow-[0_0_15px_rgba(0,255,136,0.25)]'
-                : 'bg-[#1e222b] text-[#e0e0e0] border-[#2a2f3a] hover:bg-[#2a2f3a]'
+                ? 'bg-gradient-to-r from-emerald-500 to-lime-400 text-slate-950 border-emerald-400 shadow-emerald-500/10 hover:shadow-emerald-500/20'
+                : 'bg-slate-800 text-slate-200 border-slate-700 hover:bg-slate-700'
             }`}
           >
             Switch to {activePlayer.level === 'Professional' ? 'Amateur' : 'Professional'}

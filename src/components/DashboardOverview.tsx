@@ -88,9 +88,9 @@ export default function DashboardOverview({
   return (
     <div className="space-y-8 animate-fade-in text-slate-100">
       {/* Welcome Banner */}
-      <div className="relative bg-[#12141a] rounded-3xl p-6 md:p-8 border border-[#2a2f3a] shadow-xl overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#00ff88]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-[#00b0ff]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative bg-gradient-to-r from-slate-900 via-[#111e35] to-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-lime-500/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center space-x-5">
@@ -98,17 +98,17 @@ export default function DashboardOverview({
               <img
                 src={activePlayer.avatar}
                 alt={activePlayer.name}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover ring-4 ring-[#00ff88]/20"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover ring-4 ring-emerald-500/20"
                 referrerPolicy="no-referrer"
               />
-              <span className="absolute -bottom-1.5 -right-1.5 bg-[#00ff88] text-slate-950 p-1.5 rounded-xl shadow-lg ring-2 ring-[#12141a]">
+              <span className="absolute -bottom-1.5 -right-1.5 bg-emerald-500 text-slate-950 p-1.5 rounded-xl shadow-lg ring-2 ring-slate-900">
                 <Trophy className="w-3.5 h-3.5" />
               </span>
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="font-sans font-extrabold text-2xl md:text-3xl text-white tracking-tight">{activePlayer.name}</h2>
-                <span className="text-[11px] font-bold bg-[#00ff88]/10 text-[#00ff88] border border-[#00ff88]/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                <span className="text-[11px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
                   {activePlayer.level}
                 </span>
               </div>
@@ -125,13 +125,13 @@ export default function DashboardOverview({
           <div className="flex gap-3">
             <button
               onClick={() => setActiveTab('simulator')}
-              className="cursor-pointer bg-[#00ff88] text-slate-950 hover:bg-[#00e577] hover:shadow-[0_0_15px_rgba(0,255,136,0.25)] font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.02]"
+              className="cursor-pointer bg-gradient-to-r from-emerald-500 to-lime-400 text-slate-950 font-bold px-5 py-3 rounded-xl text-xs shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-all duration-300 hover:scale-[1.02]"
             >
               Start Live Sensor Session
             </button>
             <button
               onClick={() => setActiveTab('comparison')}
-              className="cursor-pointer bg-[#1e222b] hover:bg-[#2a2f3a] text-slate-200 font-bold px-5 py-3 rounded-xl text-xs border border-[#2a2f3a] transition-all duration-300"
+              className="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-5 py-3 rounded-xl text-xs border border-slate-700 transition-all duration-300"
             >
               View Pro Benchmarks
             </button>
@@ -218,24 +218,24 @@ export default function DashboardOverview({
                 <AreaChart data={progressData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorBat" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#00ff88" stopOpacity={0.25}/>
-                      <stop offset="95%" stopColor="#00ff88" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.25}/>
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                     </linearGradient>
                     <linearGradient id="colorBowl" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#00b0ff" stopOpacity={0.25}/>
-                      <stop offset="95%" stopColor="#00b0ff" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#a3e635" stopOpacity={0.25}/>
+                      <stop offset="95%" stopColor="#a3e635" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3a" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
                   <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} />
                   <YAxis stroke="#64748b" fontSize={11} tickLine={false} label={{ value: 'Speed (km/h)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#64748b', fontSize: 10, fontWeight: 600 } }} />
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#12141a', borderColor: '#2a2f3a', borderRadius: '12px' }}
+                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px' }}
                     labelStyle={{ color: '#94a3b8', fontWeight: 600, fontSize: 11 }}
                     itemStyle={{ fontSize: 12 }}
                   />
-                  <Area type="monotone" dataKey="Batting Speed" stroke="#00ff88" strokeWidth={2.5} fillOpacity={1} fill="url(#colorBat)" name="Batting Speed (km/h)" />
-                  <Area type="monotone" dataKey="Bowling Speed" stroke="#00b0ff" strokeWidth={2.5} fillOpacity={1} fill="url(#colorBowl)" name="Bowling Speed (km/h)" />
+                  <Area type="monotone" dataKey="Batting Speed" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#colorBat)" name="Batting Speed (km/h)" />
+                  <Area type="monotone" dataKey="Bowling Speed" stroke="#a3e635" strokeWidth={2.5} fillOpacity={1} fill="url(#colorBowl)" name="Bowling Speed (km/h)" />
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
@@ -248,7 +248,7 @@ export default function DashboardOverview({
         </div>
 
         {/* Holistic Skill Balance Radar Chart */}
-        <div className="bg-[#12141a] border border-[#2a2f3a] p-5 md:p-6 rounded-2xl flex flex-col justify-between">
+        <div className="bg-slate-900/60 border border-slate-800/80 p-5 md:p-6 rounded-2xl flex flex-col justify-between">
           <div>
             <h3 className="font-sans font-bold text-base text-white">Player Radar Profile</h3>
             <p className="text-xs text-slate-400 mt-1">Holistic comparison of batting mechanics vs bowling precision.</p>
@@ -257,10 +257,10 @@ export default function DashboardOverview({
           <div className="h-64 md:h-72 flex items-center justify-center mt-4">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
-                <PolarGrid stroke="#2a2f3a" />
+                <PolarGrid stroke="#1e293b" />
                 <PolarAngleAxis dataKey="subject" stroke="#94a3b8" fontSize={10} tick={{ fill: '#94a3b8', fontSize: 10, fontWeight: 600 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#2a2f3a" fontSize={8} />
-                <Radar name={activePlayer.name} dataKey="value" stroke="#00ff88" fill="#00ff88" fillOpacity={0.15} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#334155" fontSize={8} />
+                <Radar name={activePlayer.name} dataKey="value" stroke="#10b981" fill="#10b981" fillOpacity={0.15} />
               </RadarChart>
             </ResponsiveContainer>
           </div>

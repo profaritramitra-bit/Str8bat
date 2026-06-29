@@ -146,9 +146,9 @@ export default function App() {
 
   if (players.length === 0) {
     return (
-      <div className="min-h-screen bg-[#0a0c10] flex items-center justify-center text-slate-400 font-mono text-sm">
+      <div className="min-h-screen bg-[#020617] flex items-center justify-center text-slate-400 font-mono text-sm">
         <div className="text-center space-y-3">
-          <div className="w-8 h-8 border-4 border-[#00ff88]/20 border-t-[#00ff88] rounded-full animate-spin mx-auto" />
+          <div className="w-8 h-8 border-4 border-emerald-400/30 border-t-emerald-400 rounded-full animate-spin mx-auto" />
           <span>Synchronizing str8bat IoT Core Databases...</span>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0c10] text-[#e0e0e0] flex flex-col justify-between">
+    <div className="min-h-screen bg-gradient-to-b from-[#020617] via-[#0b1329] to-[#020617] text-slate-100 flex flex-col justify-between">
       <div>
         {/* Navigation Headboard */}
         <Navbar 
@@ -173,7 +173,7 @@ export default function App() {
       </div>
 
       {/* Footer Branding block */}
-      <footer className="border-t border-[#2a2f3a] bg-[#12141a] px-4 py-6 md:px-8 text-center text-xs text-slate-500 font-medium">
+      <footer className="border-t border-slate-800/80 bg-[#0f172a]/40 px-4 py-6 md:px-8 text-center text-xs text-slate-500 font-medium">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 str8bat Performance & Analytics Hub. All rights reserved.</p>
           <div className="flex space-x-4">
@@ -181,7 +181,7 @@ export default function App() {
             <span className="text-slate-600">•</span>
             <span className="text-slate-600">Terms of Use</span>
             <span className="text-slate-600">•</span>
-            <span className="text-slate-600 cursor-pointer hover:text-[#00ff88]" onClick={handleResetDatabase}>Calibration Diagnostic Tools</span>
+            <span className="text-slate-600" onClick={handleResetDatabase}>Calibration Diagnostic Tools</span>
           </div>
         </div>
       </footer>

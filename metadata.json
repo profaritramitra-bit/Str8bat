@@ -1,0 +1,6 @@
+{
+  "name": "str8bat Performance Dashboard",
+  "description": "Comprehensive cricket performance and analytics platform for amateur and professional batsman and bowlers, powered by str8bat sensor technology simulation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Elegant Dark Color Overrides */
+  --color-slate-950: #0a0c10;
+  --color-slate-900: #12141a;
+  --color-slate-850: #1a1d26;
+  --color-slate-800: #2a2f3a;
+  --color-slate-700: #1e222b;
+  --color-slate-600: #3a3f50;
+
+  --color-emerald-300: #00ff88;
+  --color-emerald-400: #00ff88;
+  --color-emerald-500: #00ff88;
+  --color-emerald-600: #00e577;
+  --color-emerald-700: #00cc66;
+
+  --color-lime-300: #00b0ff;
+  --color-lime-400: #00b0ff;
+  --color-lime-500: #00b0ff;
+  --color-lime-600: #009be0;
+  --color-lime-700: #0086c2;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
